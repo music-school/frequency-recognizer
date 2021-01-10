@@ -1,8 +1,12 @@
 {
   "name": "frequency-recognizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Frequency recognition from any sound source",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/music-school/frequency-recognizer.git"
+  },
   "scripts": {
     "build": "webpack"
   },
