@@ -15,10 +15,6 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: "babel-loader"
-			},
-			{
-				test: /\.wasm$/,
-				use: "wasm-loader"
 			}
     ],
 	},
@@ -28,11 +24,7 @@ module.exports = {
 			fs: false
 		}
 	},
-	plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: "external/aubio.wasm", to: "" },
-      ],
-    }),
-  ],
+	experiments: {
+		asyncWebAssembly: true
+	}
 }
