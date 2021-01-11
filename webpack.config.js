@@ -19,7 +19,6 @@ module.exports = {
     ],
 	},
 	mode: "development",
-	target: 'node',
 	resolve: {
 		fallback: {
 			fs: false
