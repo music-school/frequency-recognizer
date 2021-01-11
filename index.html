@@ -7,7 +7,8 @@
 </head>
 <body>
   <button></button>
-  <script src="../build/index.js"></script>
+  <script src="./external/aubio.js"></script>
+  <script src="./build/index.js"></script>
   <script>
     let state = 0;
 
@@ -21,7 +22,8 @@
 
     $btn.onclick = () => {
       const audioContext = frequencyRecognizer.getAudioContext();
-      const instance = frequencyRecognizer.FrequencyRecognizerNode.getInstance(audioContext);
+      const recognizer = Aubio;
+      const instance = frequencyRecognizer.FrequencyRecognizerNode.getInstance(audioContext, recognizer);
 
       if (!state) {
         state = 1;

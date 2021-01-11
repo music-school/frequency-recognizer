@@ -71,5 +71,9 @@ function Nb(){function a(){if(!c.calledRun&&(c.calledRun=!0,!ka)){Fa||(Fa=!0,Aa(
 Aubio = Aubio.bind({
   _currentScript: typeof document !== 'undefined' ? document.currentScript : undefined
 });
-
-export default Aubio;
+if (typeof exports === 'object' && typeof module === 'object')
+    module.exports = Aubio;
+  else if (typeof define === 'function' && define['amd'])
+    define([], function() { return Aubio; });
+  else if (typeof exports === 'object')
+    exports["Aubio"] = Aubio;

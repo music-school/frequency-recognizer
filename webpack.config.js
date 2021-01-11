@@ -15,7 +15,7 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: "babel-loader"
-			}
+      },
     ],
 	},
 	mode: "development",
@@ -23,8 +23,5 @@ module.exports = {
 		fallback: {
 			fs: false
 		}
-	},
-	experiments: {
-		asyncWebAssembly: true
 	}
 }
