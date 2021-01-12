@@ -20,10 +20,24 @@
 
     drawBtn();
 
+    const recognizerListener = e => {
+      if (e.frequency > 440) {
+        console.log('higher than A4');
+      } else if (e.frequency === 440) {
+        console.log('A4');
+      } else if (e.frequency === 0) {
+        console.log('silence');
+      } else {
+        console.log('lower than A4');
+      }
+    };
+
     $btn.onclick = () => {
       const audioContext = frequencyRecognizer.getAudioContext();
-      const recognizer = Aubio;
-      const instance = frequencyRecognizer.FrequencyRecognizerNode.getInstance(audioContext, recognizer);
+      const recognizer = window.Aubio;
+      const instance = frequencyRecognizer.FrequencyRecognizerNode.getInstance(
+        audioContext, recognizer, recognizerListener
+      );
 
       if (!state) {
         state = 1;
