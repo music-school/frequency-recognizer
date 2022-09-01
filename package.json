@@ -1,6 +1,6 @@
 {
   "name": "frequency-recognizer",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Frequency recognition from any sound source",
   "main": "build/index.js",
   "repository": {
