@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <button></button>
-  <script src="./external/aubio.js"></script>
-  <script src="./build/index.js"></script>
-  <script>
-    let state = 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button></button>
+    <script src="https://unpkg.com/aubiojs"></script>
+    <script src="./build/index.js"></script>
+    <script>
+      let state = 0;
 
-    const $btn = document.querySelector('button');
+      const $btn = document.querySelector("button");
 
-    const drawBtn = () => {
-      $btn.innerHTML = state ? 'Stop' : 'Start';
-    };
-
-    drawBtn();
-
-    const recognizerListener = e => {
-      if (e.frequency > 440) {
-        console.log('higher than A4');
-      } else if (e.frequency === 440) {
-        console.log('A4');
-      } else if (e.frequency === 0) {
-        console.log('silence');
-      } else {
-        console.log('lower than A4');
-      }
-    };
-
-    $btn.onclick = () => {
-      const audioContext = frequencyRecognizer.getAudioContext();
-      const recognizer = window.Aubio;
-      const instance = frequencyRecognizer.FrequencyRecognizerNode.getInstance(
-        audioContext, recognizer, recognizerListener
-      );
-
-      if (!state) {
-        state = 1;
-        instance.init();
-      } else {
-        state = 0;
-        instance.destroy();
-      }
+      const drawBtn = () => {
+        $btn.innerHTML = state ? "Stop" : "Start";
+      };
 
       drawBtn();
-    };
-  </script>
-</body>
+
+      const recognizerListener = (e) => {
+        if (e.frequency > 440) {
+          console.log("higher than A4");
+        } else if (e.frequency === 440) {
+          console.log("A4");
+        } else if (e.frequency === 0) {
+          console.log("silence");
+        } else {
+          console.log("lower than A4");
+        }
+      };
+
+      $btn.onclick = () => {
+        const audioContext = frequencyRecognizer.getAudioContext();
+        const recognizer = frequencyRecognizer.Aubio;
+        const instance =
+          frequencyRecognizer.FrequencyRecognizerNode.getInstance(
+            audioContext,
+            recognizer,
+            recognizerListener
+          );
+
+        if (!state) {
+          state = 1;
+          instance.init();
+        } else {
+          state = 0;
+          instance.destroy();
+        }
+
+        drawBtn();
+      };
+    </script>
+  </body>
 </html>
