@@ -7,7 +7,7 @@
   </head>
   <body>
     <button></button>
-    <script src="https://unpkg.com/aubiojs"></script>
+    <script src="./build/aubio.js"></script>
     <script src="./build/index.js"></script>
     <script>
       let state = 0;
@@ -34,7 +34,7 @@
 
       $btn.onclick = () => {
         const audioContext = frequencyRecognizer.getAudioContext();
-        const recognizer = frequencyRecognizer.Aubio;
+        const recognizer = window.Aubio;
         const instance =
           frequencyRecognizer.FrequencyRecognizerNode.getInstance(
             audioContext,
